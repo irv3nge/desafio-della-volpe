@@ -29,7 +29,7 @@
     <li>Abra o projeto em sua IDE (IntelliJ ou VSCode)</li>
     <li>Execute a aplicação Spring Boot</li>
     <li>Acesse a API: <code>http://localhost:8080/api/usuarios</code></li>
-    <li>Swagger disponível (opcional): <code>http://localhost:8080/swagger-ui/index.html</code></li>
+    
   </ol>
 
   <h3>Frontend</h3>
