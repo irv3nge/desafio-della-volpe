@@ -1,0 +1,21 @@
+<div [formGroup]="enderecoForm">
+  <label>CEP:</label>
+  <input formControlName="cep" (blur)="onBuscarCep()" />
+
+  <label>Rua:</label>
+  <input formControlName="rua" />
+
+  <label>Número:</label>
+  <input formControlName="numero" />
+
+  <label>Estado:</label>
+  <input formControlName="estado" />
+
+  <label>Cidade:</label>
+  <input formControlName="cidade" />
+
+  <label>Bairro:</label>
+  <input formControlName="bairro" />
+
+  <button type="button" (click)="onRemover()">Remover Endereço</button>
+</div>

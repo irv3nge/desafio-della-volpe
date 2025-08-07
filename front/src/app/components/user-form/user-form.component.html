@@ -1,0 +1,29 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<app-toast *ngIf="showToast" [message]="toastMessage" [type]="toastType"></app-toast>
+
+<h2>{{ isEdit ? 'Editar' : 'Cadastrar' }} Usuário</h2>
+
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <label for="nome">Nome:</label>
+  <input id="nome" formControlName="nome" />
+
+  <label for="email">Email:</label>
+  <input id="email" formControlName="email" />
+
+  <label for="telefone">Telefone:</label>
+  <input id="telefone" formControlName="telefone" />
+
+  <div formArrayName="enderecos">
+    <div *ngFor="let endereco of enderecosFormGroups; let i = index" [formGroupName]="i">
+      <app-address-form
+        [enderecoForm]="endereco"
+        [index]="i"
+        (buscarCep)="buscarCEP($event)"
+        (remover)="removerEndereco($event)">
+      </app-address-form>
+    </div>
+  </div>
+
+  <button type="button" (click)="adicionarEndereco()">Adicionar Endereço</button>
+  <button type="submit" [disabled]="form.invalid">Salvar</button>
+</form>

@@ -1,0 +1,17 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<app-toast *ngIf="showToast" [message]="toastMessage" [type]="toastType"></app-toast>
+
+<div *ngIf="user">
+  <h2>{{ user.nome }}</h2>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Telefone:</strong> {{ user.telefone }}</p>
+
+  <h3>Endereços:</h3>
+  <ul>
+    <li *ngFor="let e of user.enderecos">
+      {{ e.rua }}, {{ e.numero }} - {{ e.bairro }}, {{ e.cidade }} - {{ e.estado }} ({{ e.cep }})
+    </li>
+  </ul>
+
+  <button [routerLink]="['/usuario', user.id, 'editar']">Editar</button>
+</div>
