@@ -1,188 +1,101 @@
 <!DOCTYPE html>
-
-  <title>README API - Desafio Técnico</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 20px auto;
-      max-width: 960px;
-      color: #2c3e50;
-    }
-    h1, h2, h3 {
-      color: #34495e;
-    }
-    code {
-      background: #f4f4f4;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-    }
-    pre {
-      background: #f9f9f9;
-      padding: 12px;
-      border-radius: 6px;
-      overflow-x: auto;
-      border-left: 6px solid #ccc;
-    }
-    .status {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    .ok {
-      background: #2ecc71;
-      color: #fff;
-    }
-    .fail {
-      background: #e74c3c;
-      color: #fff;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    hr {
-      margin: 30px 0;
-    }
-  </style>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>README - Desafio Della Volpe</title>
 </head>
 <body>
+  <h1>🚀 Desafio Técnico - Della Volpe</h1>
 
-  <h1>📘 API REST - Desafio Técnico</h1>
-  <p>Este projeto é uma API RESTful desenvolvida com Spring Boot para gerenciar usuários e seus endereços, com validação de CEP usando a API pública ViaCEP.</p>
+  <h2>📌 Objetivo</h2>
+  <p>
+    Aplicação fullstack (Java Spring Boot + Angular) para cadastro de usuários e seus endereços,
+    com validação de CEP via API ViaCEP.
+  </p>
 
-  <h2>✅ Funcionalidades e Status</h2>
+  <h2>🧰 Tecnologias</h2>
   <ul>
-    <li><strong>Listar todos os usuários</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Buscar usuário por ID</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Criar usuário + endereço</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Atualizar usuário + endereço</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Remover usuário + endereços</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Validação de CEP com ViaCEP</strong>: <span class="status ok">OK</span></li>
-    <li><strong>Impedir criação/edição com CEP inválido</strong>: <span class="status ok">OK</span></li>
+    <li>Java 17 + Spring Boot</li>
+    <li>Angular 19+ standalone</li>
+    <li>Banco de Dados H2 (persistência em memória)</li>
+    <li>API ViaCEP</li>
   </ul>
 
-  <hr>
+  <h2>▶️ Como executar o projeto</h2>
 
-  <h2>🧪 Endpoints</h2>
+  <h3>Backend</h3>
+  <ol>
+    <li>Clone o repositório: <code>git clone https://github.com/irv3nge/desafio-della-volpe</code></li>
+    <li>Abra o projeto em sua IDE (IntelliJ ou VSCode)</li>
+    <li>Execute a aplicação Spring Boot</li>
+    <li>Acesse a API: <code>http://localhost:8080/api/usuarios</code></li>
+    <li>Swagger disponível (opcional): <code>http://localhost:8080/swagger-ui/index.html</code></li>
+  </ol>
 
-  <h3>1. Listar Todos os Usuários</h3>
-  <p><strong>GET</strong> <code>/api/usuarios</code></p>
-  <pre><code>curl -X GET http://localhost:8080/api/usuarios</code></pre>
+  <h3>Frontend</h3>
+  <ol>
+    <li>Entre na pasta do frontend</li>
+    <li>Instale as dependências: <code>npm install</code></li>
+    <li>Execute: <code>ng serve</code></li>
+    <li>Acesse: <code>http://localhost:4200</code></li>
+  </ol>
 
-  <h3>2. Buscar Usuário por ID</h3>
-  <p><strong>GET</strong> <code>/api/usuarios/{id}</code></p>
-  <pre><code>curl -X GET http://localhost:8080/api/usuarios/1</code></pre>
+  <h2>🔗 Endpoints Backend</h2>
 
-  <h3>3. Criar Usuário com Endereço</h3>
-  <p><strong>POST</strong> <code>/api/usuarios</code></p>
-  <pre><code>curl -X POST http://localhost:8080/api/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Pedro Jorge",
-    "email": "pedro@email.com",
-    "telefone": "11999999999",
-    "enderecos": [
-      {
-        "cep": "01001000",
-        "rua": "Praça da Sé",
-        "numero": "100",
-        "estado": "SP",
-        "cidade": "São Paulo",
-        "bairro": "Sé"
-      }
-    ]
-  }'</code></pre>
-
-  <h3>4. Atualizar Usuário + Endereços</h3>
-  <p><strong>PUT</strong> <code>/api/usuarios/{id}</code></p>
-  <pre><code>curl -X PUT http://localhost:8080/api/usuarios/1 \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nome": "Pedro Atualizado",
-    "email": "novo@email.com",
-    "telefone": "11988888888",
-    "enderecos": [
-      {
-        "cep": "02020000",
-        "rua": "Rua Nova",
-        "numero": "200",
-        "estado": "SP",
-        "cidade": "São Paulo",
-        "bairro": "Centro"
-      }
-    ]
-  }'</code></pre>
-
-  <h3>5. Deletar Usuário</h3>
-  <p><strong>DELETE</strong> <code>/api/usuarios/{id}</code></p>
-  <pre><code>curl -X DELETE http://localhost:8080/api/usuarios/1</code></pre>
-
-  <hr>
-
-  <h2>🔍 Validação de CEP</h2>
+  <h3>👤 Usuários</h3>
   <ul>
-    <li>Durante a criação e edição, o backend faz uma chamada para a <strong>API do ViaCEP</strong>.</li>
-    <li>Se o CEP for inválido (ou <code>endereco.erro == true</code>), a requisição é rejeitada com <code>400 Bad Request</code>.</li>
-    <li>No frontend, é exibido o alerta visual abaixo do formulário: <code>CEP inválido</code>.</li>
+    <li><strong>GET /api/usuarios</strong> — Lista todos os usuários</li>
+    <li><strong>GET /api/usuarios/{id}</strong> — Retorna usuário com endereços</li>
+    <li><strong>POST /api/usuarios</strong> — Cria um usuário com endereços
+      <pre><code>{
+  "nome": "João Silva",
+  "email": "joao@email.com",
+  "telefone": "11999999999",
+  "enderecos": [{
+    "cep": "01001-000",
+    "rua": "Rua Teste",
+    "numero": "123",
+    "estado": "SP",
+    "cidade": "São Paulo",
+    "bairro": "Centro"
+  }]
+}</code></pre>
+    </li>
+    <li><strong>PUT /api/usuarios/{id}</strong> — Atualiza usuário com endereços</li>
+    <li><strong>DELETE /api/usuarios/{id}</strong> — Remove usuário e endereços</li>
   </ul>
 
-  <hr>
+  <h3>🏠 Endereços</h3>
+  <ul>
+    <li><strong>POST /api/usuarios/{usuarioId}/enderecos</strong> — Cria um novo endereço</li>
+    <li><strong>PUT /api/usuarios/{usuarioId}/enderecos/{id}</strong> — Atualiza endereço</li>
+    <li><strong>DELETE /api/usuarios/{usuarioId}/enderecos/{id}</strong> — Remove endereço</li>
+  </ul>
 
-  <h2>📦 JSON de Exemplo para Testes</h2>
+  <h2>🖥️ Funcionalidades do Frontend (Angular)</h2>
+  <ul>
+    <li>Formulário dinâmico com múltiplos endereços</li>
+    <li>Validação de campos obrigatórios (nome, email, telefone, etc)</li>
+    <li>Validação automática de CEP via API do ViaCEP</li>
+    <li>Mensagem visual de sucesso/erro em:
+      <ul>
+        <li>Criação do usuário</li>
+        <li>Erro no CEP (exibe “CEP inválido” abaixo do campo)</li>
+        <li>Erro na API (backend desligado)</li>
+      </ul>
+    </li>
+    <li>Spinner visual durante carregamento</li>
+  </ul>
 
-  <h3>JSON válido para criação</h3>
-  <pre><code>{
-  "nome": "Maria da Silva",
-  "email": "maria@teste.com",
-  "telefone": "11991234567",
-  "enderecos": [
-    {
-      "cep": "01001000",
-      "rua": "Praça da Sé",
-      "numero": "123",
-      "estado": "SP",
-      "cidade": "São Paulo",
-      "bairro": "Sé"
-    }
-  ]
-}</code></pre>
+  <h2>✅ Cobertura dos Requisitos Técnicos</h2>
+  <ul>
+    <li>✔️ API RESTful com todos os endpoints esperados</li>
+    <li>✔️ Validação de CEP via ViaCEP (com bloqueio se inválido)</li>
+    <li>✔️ CRUD completo de usuários e endereços</li>
+    <li>✔️ Interface Angular integrada com mensagens visuais</li>
+  </ul>
 
-  <h3>JSON inválido com CEP inexistente</h3>
-  <pre><code>{
-  "nome": "Teste",
-  "email": "teste@invalido.com",
-  "telefone": "11991111111",
-  "enderecos": [
-    {
-      "cep": "99999999",  // inválido
-      "rua": "Fake",
-      "numero": "999",
-      "estado": "SP",
-      "cidade": "SP",
-      "bairro": "Fake"
-    }
-  ]
-}</code></pre>
-
-  <p>Retorno esperado:</p>
-  <pre><code>{
-  "message": "CEP inválido",
-  "status": 400
-}</code></pre>
-
-  <hr>
-
-  <h2>🔗 Repositório</h2>
-  <p>Você pode acessar o projeto completo no GitHub:</p>
+  <h2>📁 Link do Projeto</h2>
   <p><a href="https://github.com/irv3nge/desafio-della-volpe" target="_blank">https://github.com/irv3nge/desafio-della-volpe</a></p>
-
-  <hr>
-
-  <h2>📄 Licença</h2>
-  <p>Este projeto é destinado exclusivamente ao desafio técnico proposto pela Della Volpe.</p>
-
 </body>
 </html>
